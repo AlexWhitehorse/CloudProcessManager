@@ -9,6 +9,7 @@ class UserProc():
         self.parrent_pid = 0
         self.child_pid = Value('i')
         self.nameProcess = nameProcess
+        # name user
         self.user = user
         self.stasus = STATUSES[2]
         self.statusFile = STATUS_FILE
@@ -45,15 +46,21 @@ class UserProc():
 
         try:
             data = json.loads(d)
-        except json.decoder.JSONDecodeError:
+        except json.decoder.JSONDecodeError as e:
+            print(e)
             data = {}
 
         try:
             user = data[self.user]
-        except KeyError:
+        except KeyError as k:
+            print(k)
             user = {}
 
         process = {}
+
+        # Дефолтные значения
+        process["numErrors"] = 0
+        process["timeFirstError"] = 0
 
         process["comand"] = self.comand
         self.stasus = STATUSES[1]
@@ -73,6 +80,7 @@ class UserProc():
 
         # Если это последний процесс у пользоваткля
         if len(data[self.user]) <= 1:
+
             data.pop(self.user)
 
             toFile = json.dumps(data)
@@ -80,7 +88,6 @@ class UserProc():
             self.writeFile(self.statusFile, toFile)
 
         else:
-
             user = data[self.user]
             user.pop(self.nameProcess)
             data[self.user] = user

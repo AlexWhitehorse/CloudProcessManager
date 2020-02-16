@@ -4,7 +4,7 @@ from constants import *
 from config import *
 from source.modelsData import UserProc
 # 
-from source.states import spawnProcess, stopProces, changeStatus, addUser
+from source.states import spawnProcess, stopProces, restart, runErrorController
 # 
 import os
 import json
@@ -17,59 +17,64 @@ class Alice(Server):
     proceses = []
 
     def handle(self, message):
-        print(message)
         data = json.dumps(message.decode('ascii'))
         message = receiveDecode(message)
-        # print(message["user"])
 
         if message["action"] == "run":
-            userProc = spawnProcess(
-                message["user"],
-                message["process"],
-                message["comand"] 
-              )
-            self.proceses.append(userProc)
-
-            # changeStatus("petusa", "ping150", "NEW STATUS")
-            # addUser("kolia", "test", "test coamnd", "statr")
+            self.process_run(message)
         
         if message["action"] == 'stop':
+            self.process_stop(message)
+
+        if message["action"] == 'restart':
+            """ 
             print("stoping")
 
             target_user = message['user']
             target_process = message['process']
-            # UserProc
-            # prc = self.proceses[0]
-            counter = 0
-            # UserProc <---
+
             for elem in self.proceses:
-
                 if elem.IsTrue(target_user, target_process):
+                    restart(elem)
+            """
+            self.process_restart(message)
 
-                    #  == is alive()
-                    if stopProces(elem):
-                        self.proceses.pop(counter)
-                        pass
 
-                counter += 1
+    def process_run(self, message):
 
-            print(self.proceses)
-            #  == is alive()
-            # if stopProces(prc):
-            #     print("Process sucscfully killed")
-            #     self.proceses.pop(0)
-            # else:
-            #     print("Process is not killed")
+        userProc = spawnProcess(
+                message["user"],
+                message["process"],
+                message["comand"] 
+              )
+        self.proceses.append(userProc)
 
-        if message["action"] == "ts":
-            print("sh")
 
-            for proc in self.proceses:
-                if proc.nameIsTrue("vasia"):
-                    userProc = self.proceses[0]
-                    print("data: ", userProc.process, userProc.parrent_pid)
-                    print("child pid: ", userProc.getChildPid())
+    def process_stop(self, message):
+
+        # print("stoping")
+
+        target_user = message['user']
+        target_process = message['process']
+
+        counter = 0
+        # UserProc <---
+        for elem in self.proceses:
+
+            if elem.IsTrue(target_user, target_process):
+
+                #  == is alive()
+                if stopProces(elem):
+                    self.proceses.pop(counter)
                     pass
+
+            counter += 1
+
+
+    def process_restart(self, message):
+        self.process_stop(message)
+        self.process_run(message)
+
 
 def startAlice(ip, port):
     try:
@@ -82,9 +87,13 @@ def startAlice(ip, port):
         return startAlice(ip, port)
 
 
+
 if __name__ == "__main__":
-    # print("Server starting")
+    
     app = startAlice(IP, PORT)
     app.start_server()
+
+    runErrorController()
+
     app.loop()
     app.stop_server()

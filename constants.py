@@ -1,17 +1,25 @@
-import os
+# import os
 from config import *
  
 import json
 
-# PATH_TO_PROC_S = os.path.abspath("processes.json")
 DIR_LOGS = "/tmp/ProcessController/"
 STATUS_FILE = os.path.abspath("processes.json")
+ERRORS_PATTERN = os.path.abspath("errors.json")
 
 IP = server_ip
 
 PORT = server_port
 
-NUM_OF_CHECKING_LOG_STR = 20
+NUM_OF_CHECKING_LOG_STR = 1
+
+NUM_MONO_CHECS = 3
+
+MAX_NUM_ERRORS = 3
+
+MAX_TIMER_SEC = 300
+
+PERIOD_CHECK_LOG_SEC = 3
 
 # CODEC
 def sendStart(user, process, comand):

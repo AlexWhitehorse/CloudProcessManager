@@ -26,7 +26,7 @@ class Queue:
 
     def start_server(self):
         self.server_thread.start()
-        print("Server loop running in thread:", self.server_thread.name)
+        # print("Server loop running in thread:", self.server_thread.name)
 
     def stop_server(self):
         self.server.shutdown()

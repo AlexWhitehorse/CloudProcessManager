@@ -17,10 +17,10 @@ class Server:
 
     def loop(self):
         while True:
-            time.sleep(1)
             if self.queue.exists():
                 # print(self.queue.get())
                 self.handle(self.queue.get())
+            time.sleep(0.4)
 
     def handle(self, message):
         """

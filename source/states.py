@@ -1,13 +1,14 @@
-from source.Process import MyProcess
-from constants import DIR_LOGS, STATUS_FILE
-from source.modelsData import UserProc, STATUSES
+from source.Process import MyProcess, ErrorController
+from constants import DIR_LOGS
+from source.modelsData import UserProc
 
-from multiprocessing import Process, Value
+from multiprocessing import Process
 
 import subprocess 
 # 
-import json
-import os
+# import json
+import os, signal 
+
 
 # Функции поведения для handle
 def spawnProcess(nameUser, nameProcess, comand):
@@ -25,16 +26,18 @@ def spawnProcess(nameUser, nameProcess, comand):
 
     return userProc
 
+
 def rn(val, nameUser, nameProcess, comand):
 
     while 1:
         proc = MyProcess(nameUser, nameProcess, comand)
         proc.mstart()
 
-        print(proc.mprocess.pid)
+        # print(proc.mprocess.pid)
 
         val.value = proc.mprocess.pid
         proc.mprocess.wait()
+
 
 # geting obj UserProc as first argument
 def stopProces(userProc):
@@ -55,18 +58,36 @@ def stopProces(userProc):
     else:
         print("Process user: %s, nameProcess: %s, pid: %s. Sucscessfully killed" % (userProc.user, userProc.nameProcess, pid))
         
+        # Удаление файла с выводом запущеного скрипта
         pathToPidFile = DIR_LOGS + "%s_%s.txt" % (userProc.user, userProc.nameProcess)
-
         os.remove(pathToPidFile)
 
         userProc.deleteUserProcess()
         return True
 
+
+def restart(userProc):
+    stopProces(userProc)
+    spawnProcess(userProc.user, userProc.nameProcess, userProc.comand)
+
+
 def killProc(pid):
-    return subprocess.call("kill %s" % str(pid), shell=True)
+    """ Check For the existence of a unix pid. """
+    try:
+        os.kill(pid, signal.SIGKILL)
+    except OSError:
+        return True
+    else:
+        return False
+
+
+def runErrorController():
+    EC = ErrorController()
+    EC.run()
+
 
 # change status
-def changeStatus(nameUser, nameProcess, newStatus):
+""" def changeStatus(nameUser, nameProcess, newStatus):
     statusFile = STATUS_FILE
     
     f = open(statusFile, "r")
@@ -137,7 +158,7 @@ def addUser(nameUser, nameProcess, comand, status):
     f = open(statusFile, "w")
     f.write(toFile)
     f.close()
-
+ """
 
 
 
