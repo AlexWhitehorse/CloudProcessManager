@@ -1,0 +1,90 @@
+body{
+    background-color: rgb(238, 238, 238);
+    min-width: 500px;
+  }
+.nameProcess {
+    /* text-align: center;
+    vertical-align:middle;
+    margin-top: auto;
+    line-height: 100%; */
+    /* height:100%;
+     line-height:100%; */
+    font-weight: 700;
+    font-size: large;
+    margin-top: 5px;
+}
+.stl-btns{
+    height: 35px;
+}
+.user {
+}
+.userName{
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: x-large;
+  text-align: center;  
+  margin-bottom: 0;
+}
+.process{
+    padding: 15px;
+    margin-top: 15px;
+    border: 0.5px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: #18649727;
+}
+.status{
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 130px;
+    /* background-color: rgba(255, 208, 0, 0.555); */
+    /* background-color: rgba(192, 3, 3, 0.459); */
+    /* background-color: rgba(72, 192, 3, 0.459); */
+}
+.ml-left-5{
+    margin-left: 8px;
+}
+
+.proc-btns{
+  border: 1px solid black;
+  border-color: black;
+  line-height: 22px;
+}
+.img-logo{
+  height: 50px;
+}
+.proc-btns-icons{
+  padding: 0;
+  /* padding-left: 3px; */
+  width: 40px;
+}
+.start{
+  padding-left: 3px;
+}
+.white-color{
+  background-color: #ffffff;
+}
+/* header */
+.headerLine{
+    background-color: #186497;
+    z-index: 50;
+  }
+.headerText_2{
+    height: 50px;
+    font-size: 30px;
+  color: white;
+  margin-left: 30px;
+}
+.color-svg{
+    padding-top: 2px;
+}
+.logout{
+    margin-top: 7px;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #186497;
+  color: white;
+  border: 1.5px solid rgb(255, 255, 255) !important;
+}
+.header{
+    padding-top: 65px;
+  }
