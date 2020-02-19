@@ -1,6 +1,5 @@
 from source.Process import *
 from constants import *
-# from source.controller import *
 from config import *
 from source.modelsData import UserProc
 # 
@@ -8,12 +7,11 @@ from source.states import spawnProcess, stopProces, restart, runErrorController
 # 
 import os
 import json
-# from threading import Thread
 import time
 from source.server import Server
-# from multiprocessing import Process, Lock, Value
 
 class Alice(Server):
+
     proceses = []
 
     def handle(self, message):
@@ -42,12 +40,21 @@ class Alice(Server):
 
     def process_run(self, message):
 
-        userProc = spawnProcess(
-                message["user"],
-                message["process"],
-                message["comand"] 
-              )
-        self.proceses.append(userProc)
+        # if(proceses)
+        prcs = self.proceses
+        for proc in prcs:
+
+            if(proc.IsTrue(message["user"], message["process"])):
+                print("Process already runned")
+                break
+
+        else:
+            userProc = spawnProcess(
+                    message["user"],
+                    message["process"],
+                    message["comand"] 
+                )
+            self.proceses.append(userProc)
 
 
     def process_stop(self, message):
@@ -97,3 +104,5 @@ if __name__ == "__main__":
 
     app.loop()
     app.stop_server()
+
+#-- version 1.0 /ProcessManager was originally written by Alex Bielokone <sasha.belokone@gmail.com>

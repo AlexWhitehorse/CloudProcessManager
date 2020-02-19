@@ -3,7 +3,11 @@ from config import *
  
 import json
 
-DIR_LOGS = "/tmp/ProcessController/"
+
+NAME_FOLDER_LOGS = "ProcessManager_tmp/"
+DIR_LOGS = path_to_tmp_file + NAME_FOLDER_LOGS
+
+
 STATUS_FILE = os.path.abspath("processes.json")
 ERRORS_PATTERN = os.path.abspath("errors.json")
 

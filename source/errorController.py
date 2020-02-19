@@ -1,12 +1,12 @@
 # from ..source.constants import *
 import os
 import socket
-DIR_LOGS = "/tmp/ProcessController/"
 import json
+import time
+
 from constants import STATUS_FILE, ERRORS_PATTERN, DIR_LOGS, NUM_MONO_CHECS, IP, PORT, MAX_NUM_ERRORS, NUM_OF_CHECKING_LOG_STR
 from constants import MAX_TIMER_SEC
-import time
-from datetime import datetime
+
 
 # NUM_OF_CHECKING_LOG_STR = 20
 # from subprocess import Popen
