@@ -117,7 +117,8 @@ if( isset($_GET['process']) ){
     <!-- Jquerry -->
     <script src="dependances/jquery-3.4.1.min.js" defer></script>
     <!-- My scripts -->
-    <script src="scriptsJS/GetLogs.js" defer></script>
+    <!-- <script src="scriptsJS/GetLogs.js" defer></script> -->
+    <script src="scriptsJS/updateLogs.js" defer></script>
 </body>
 
 

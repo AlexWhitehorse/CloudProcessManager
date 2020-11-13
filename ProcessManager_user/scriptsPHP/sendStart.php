@@ -8,7 +8,7 @@
     function sendData($array)
     {
         $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); // Создаем TCP Socket
-        $ret = socket_connect($socket, "localhost", 5003); // Устанавливаем соединение
+        $ret = socket_connect($socket, "localhost", 65204); // Устанавливаем соединение
         
         if(!$ret): print("error connecting"); die(); endif;
 
@@ -27,7 +27,7 @@
     }
 
     $defaultDataActions = [
-        "start" => [
+        "run" => [
             "action" => "run",
         ],
         "stop" => [
@@ -39,21 +39,20 @@
 
     switch ($data['action']) {
 
-        case 'start':
-            $start = $defaultDataActions["start"];
-            $start["user"] = $data["userName"];
-            $start["process"] = $data["nameProcess"];
-            $start["comand"] = $data["comand"];
-
+        case 'run':
+            $start = $defaultDataActions["run"];
+            $start["user"]    = $data["user"];
+            $start["process"] = $data["process"];
+            $start["comand"]  = $data["comand"];
+            
             sendData($start);
 
             break;
 
         case 'stop':
             $stop = $defaultDataActions["stop"];
-            $stop["user"] = $data["userName"];
-            $stop["process"] = $data["nameProcess"];
-            // $start["comand"] = $data["comand"];
+            $stop["user"]    = $data["user"];
+            $stop["process"] = $data["process"];
 
             sendData($stop);
 

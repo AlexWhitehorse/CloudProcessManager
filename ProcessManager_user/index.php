@@ -12,8 +12,8 @@ if (isset($_COOKIE['password']) & isset($_COOKIE['login'])):
     $cookiePass = $_COOKIE['password'];
     $cookieLogin = $_COOKIE['login'];
 else:
-    $cookiePass = 0;
-    $cookieLogin = 0;
+    $cookiePass = null;
+    $cookieLogin = null;
 endif;
 
 if( ! getUserData($cookieLogin, $cookiePass))
@@ -74,15 +74,6 @@ else if($userData = getUserData($cookieLogin, $cookiePass))
 
             </div>
     </div>
-    
-
-
-
-
-
-
-
-
 
 <?php
 

@@ -1,0 +1,21 @@
+{
+    "webServerAddress": ":8080",
+    "tcpCtrlAddress": ":33333",
+    "tcpLogAddress": ":33334",
+    "tcpNotifyAddress": "127.0.0.1:8686",
+    "errorsCheckPeriod": 60000,
+    "errorsCheckCount": 2,
+    "emptyCheckPeriod": 6000,
+    "nProcLogsSize": 30,
+	"tcpCtrlBufferSize": 32768,
+	"tcpLogBufferSize": 32768,
+    "errorTemplates": [
+        "PES packet size mismatch",
+        "Non-monotonus DTS",
+        "Past duration",
+        "av_interleaved_write_frame",
+        "real-time buffer",
+        "error while decoding",
+        "abc","def"
+    ]
+}

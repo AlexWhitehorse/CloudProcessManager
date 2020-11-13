@@ -1,0 +1,6 @@
+User: vasiaProcess: ffmpeg_rtmpHTTP/1.0 200 OkUser: vasiaProcess: ffmpeg_rtmp
+User: vasiaProcess: ffmpeg_rtmpContent-Type: text/html; charset="utf-8"User: vasiaProcess: ffmpeg_rtmp
+User: vasiaProcess: ffmpeg_rtmpUser: vasiaProcess: ffmpeg_rtmp
+User: vasiaProcess: ffmpeg_rtmp<h1>Nothing to see here</h1>
+User: vasiaProcess: ffmpeg_rtmpчт трав. 7 17:01:13 2020
+User: vasiaProcess: ffmpeg_rtmpUser: vasiaProcess: ffmpeg_rtmp=   50494kB time=00:02:33.01 bitrate=2703.2kbits/s speed=1.02x    User: vasiaProcess: ffmpeg_rtmp

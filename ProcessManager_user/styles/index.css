@@ -16,8 +16,8 @@ body{
 .stl-btns{
     height: 35px;
 }
-.user {
-}
+/* .user {
+} */
 .userName{
   margin-top: 15px;
   font-weight: 600;
@@ -35,7 +35,9 @@ body{
 .status{
     margin-left: 20px;
     margin-right: 20px;
-    min-width: 130px;
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 95px;
     /* background-color: rgba(255, 208, 0, 0.555); */
     /* background-color: rgba(192, 3, 3, 0.459); */
     /* background-color: rgba(72, 192, 3, 0.459); */
@@ -87,4 +89,29 @@ body{
 }
 .header{
     padding-top: 65px;
+  }
+
+  @media (min-width: 768px) { 
+    .userName{
+      margin-top: 10px;
+      font-weight: 500;
+      font-size: large;
+    }
+    .proc-btns{
+      border: 1px solid rgb(172, 172, 172);
+      background-color: #ffffff33;
+    }
+    .stl-btns{
+      border: 1px solid rgb(170, 170, 170);
+      /* background-color: #00000031; */
+  }
+    .process{
+      padding: 4px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-top: 3px;
+      border: 0.5px solid rgb(124, 124, 124);
+      border-radius: 10px;
+      background-color: #18649727;
+  }
   }

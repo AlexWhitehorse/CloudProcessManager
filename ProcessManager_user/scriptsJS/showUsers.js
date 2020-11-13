@@ -61,7 +61,7 @@ function handleJson(data){
     return users
 }
 
-
+// Usless
 function getProcessesData() {
     let objcts
 
@@ -90,18 +90,16 @@ function startProcess(user, process, statusField) {
         type: "post",
     datatype: 'json',
         data: {
-            "action"     : "start",
-            "userName"   : user.name, 
-            "nameProcess": process.nameProcess, 
-            "comand"     : process.comand
+            "action" : "run",
+            "user"   : user.name, 
+            "process": process.nameProcess, 
+            "comand" : process.comand
             },
         beforeSend: function() {
             // Set new status
             elem = $(`#${user.name}-${process.nameProcess}`).css({"background-color":"rgba(255, 208, 0, 0.555)"}).text("STARTING")
-            console.log(elem)
         },
         success: function(data){
-            console.log(data)
         },
         error: function(){
             alert("Не удалось запустить")
@@ -116,9 +114,9 @@ function stopProcess(user, process) {
         type: "post",
     datatype: 'json',
         data: {
-            "action"     : "stop",
-            "userName"   : user.name, 
-            "nameProcess": process.nameProcess, 
+            "action" : "stop",
+            "user"   : user.name, 
+            "process": process.nameProcess, 
             // "comand"     : process.comand
             },
         beforeSend: function() {

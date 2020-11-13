@@ -1,0 +1,12 @@
+HTTP/1.0 200 Ok
+Content-Type: text/html; charset="utf-8"
+
+<h1>Nothing to see here</h1>
+чт трав. 7 18:30:22 2020
+:uname=Kolia:name=ffmpeg_rtmp:frame=  567 fps= 29 q=-1.0 size=    7774kB time=00:00:22.74 bitrate=2799.7kbits/s speed=1.16x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  582 fps= 29 q=-1.0 size=    7990kB time=00:00:23.35 bitrate=2802.0kbits/s speed=1.16x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  593 fps= 29 q=-1.0 size=    8382kB time=00:00:23.80 bitrate=2885.0kbits/s speed=1.16x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  607 fps= 29 q=-1.0 size=    8554kB time=00:00:24.34 bitrate=2878.2kbits/s speed=1.15x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  619 fps= 29 q=-1.0 size=    8661kB time=00:00:24.84 bitrate=2855.6kbits/s speed=1.15x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  632 fps= 28 q=-1.0 size=    8781kB time=00:00:25.35 bitrate=2837.1kbits/s speed=1.14x     fps, 25 tbr, 90k tbn, 1k tbc
+20p(progress:uname=Kolia:name=ffmpeg_rtmp:frame=  647 fps= 28 q=-1.0 size=    8947kB time=00:00:25.98 bitrate=2820.9kbits/s speed=1.14x     fps, 25 tbr, 90k tbn, 1k tbc
