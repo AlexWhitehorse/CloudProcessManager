@@ -25,32 +25,50 @@
 2. Разместить папку ProcessManager_user в папке сервера (/var/www/html/)
 
 3. Настройка конфигов: 
-    - в ProcessManager_user/config.php
-        - Изменить значение PATH_TO_PM на путь к ProcessManager_server
-        Пример: const PATH_TO_PM = '/home/nameUser/ProcessManager_server/';
+В ProcessManager_user/config.php
+Изменить значение PATH_TO_PM на путь к ProcessManager_server
+Пример: 
+```
+const PATH_TO_PM = '/home/nameUser/ProcessManager_server/';
+```
     
-Установить sudo apt-get install php-mbstring
+Установить
+```
+sudo apt-get install php-mbstring
+```
 
-4. Процессы, которые нужно контролировать записывать в файл /ProcessManager_user/processes.ini
+4. Процессы которые нужно контролировать записывать в файл ***/ProcessManager_user/processes.ini***
 
-5. Добавление в автозагрузку
+## Добавление в автозагрузку
+```
     sudo nano /lib/systemd/system/proces-manager.service
+```
 
-        [Unit]
-        Description=Process Manager service
-        After=multi-user.target
-        After=network.target
-        [Service]
-        Type=simple
-	#Путь к директории ProcessManager_server_2.0
-        WorkingDirectory=/home/
-	#Путь к файлу сценария run.sh
-        ExecStart=/home/.../run.sh
-        [Install]
-        WantedBy=multi-user.target
+```
+[Unit]
+Description=Process Manager service
+After=multi-user.target
+After=network.target
 
-    sudo systemctl daemon-reload
-    sudo systemctl enable proces-manager.service
-    sudo systemctl start proces-manager.service
+[Service]
+Type=simple
 
+#Путь к директории ProcessManager_server_2.0
+WorkingDirectory=/home/
+
+#Путь к файлу сценария run.sh
+ExecStart=/home/.../run.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+```
+sudo systemctl daemon-reload
+```
+```
+sudo systemctl enable proces-manager.service
+```
+```
+sudo systemctl start proces-manager.service
+```
 
