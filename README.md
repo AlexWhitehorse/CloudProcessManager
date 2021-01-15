@@ -40,35 +40,46 @@ sudo apt-get install php-mbstring
 4. Процессы которые нужно контролировать записывать в файл ***/ProcessManager_user/processes.ini***
 
 ## Добавление в автозагрузку
-```
-    sudo nano /lib/systemd/system/proces-manager.service
-```
-
+`sudo nano /lib/systemd/system/proces-manager.service`
 ```
 [Unit]
 Description=Process Manager service
 After=multi-user.target
 After=network.target
-
 [Service]
 Type=simple
-
-#Путь к директории ProcessManager_server_2.0
-WorkingDirectory=/home/
-
-#Путь к файлу сценария run.sh
-ExecStart=/home/.../run.sh
-
+#Environment=/home/livetv/ProcessManager_server_2.0
+WorkingDirectory=/home/livetv/ProcessManager_server_2.0
+ExecStart=/home/livetv/ProcessManager_server_2.0/run.sh
 [Install]
 WantedBy=multi-user.target
 ```
 ```
-sudo systemctl daemon-reload
+sudo systemctl daemon-reload	&
+sudo systemctl enable proces-manager.service	&
+sudo systemctl start proces-manager.service	&
+sudo systemctl status proces-manager.service;
+```
+
+### Воторой sh скрипт
+`sudo nano /lib/systemd/system/proces-manager-controller.service`
+ ```
+[Unit]
+Description=Controller Process Manager service
+After=multi-user.target
+After=network.target
+[Service]
+Type=simple
+#Environment=/home/livetv/ProcessManager_server_2.0/
+WorkingDirectory=/home/transcod/ProcessManager_server_2.0/ProcessController\ GO/weberr/
+ExecStart=/home/transcod/ProcessManager_server_2.0/ProcessController\ GO/weberr/dev_run.sh
+[Install]
+WantedBy=multi-user.target
 ```
 ```
-sudo systemctl enable proces-manager.service
-```
-```
-sudo systemctl start proces-manager.service
+sudo systemctl daemon-reload &
+sudo systemctl enable proces-manager-controller.service &
+sudo systemctl start proces-manager-controller.service &
+sudo systemctl status proces-manager-controller.service;
 ```
 
