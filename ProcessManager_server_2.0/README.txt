@@ -13,22 +13,48 @@
 4. Процессы, которые нужно контролировать записывать в файл /ProcessManager_user/processes.ini
 
 5. Добавление в автозагрузку
-    nano /lib/systemd/system/proces-manager.service
+    `nano /lib/systemd/system/proces-manager.service`
+```
+[Unit]
+Description=Process Manager service
+After=multi-user.target
+After=network.target
+[Service]
+Type=simple
+#Environment=/home/livetv/ProcessManager_server_2.0
+WorkingDirectory=/home/livetv/ProcessManager_server_2.0
+ExecStart=/home/livetv/ProcessManager_server_2.0/run.sh
+[Install]
+WantedBy=multi-user.target
+```
 
-        [Unit]
-        Description=Process Manager service
-        After=multi-user.target
-        After=network.target
-        [Service]
-        Type=simple
-        #Environment=/home/livetv/ProcessManager_server_2.0
-        WorkingDirectory=/home/livetv/ProcessManager_server_2.0
-        ExecStart=/home/livetv/ProcessManager_server_2.0/run.sh
-        [Install]
-        WantedBy=multi-user.target
+sudo systemctl daemon-reload
 
-    sudo systemctl daemon-reload
-    sudo systemctl enable proces-manager.service
-    sudo systemctl start proces-manager.service
+sudo systemctl enable proces-manager.service
 
+sudo systemctl start proces-manager.service
 
+sudo systemctl status proces-manager.service
+
+    
+` nano /lib/systemd/system/proces-manager-controller.service`
+    
+ ```
+[Unit]
+Description=Controller Process Manager service
+After=multi-user.target
+After=network.target
+[Service]
+Type=simple
+#Environment=/home/livetv/ProcessManager_server_2.0/
+WorkingDirectory=/home/transcod/ProcessManager_server_2.0/ProcessController\ GO/weberr/
+ExecStart=/home/transcod/ProcessManager_server_2.0/ProcessController\ GO/weberr/dev_run.sh
+[Install]
+WantedBy=multi-user.target
+```
+```
+sudo systemctl daemon-reload &
+sudo systemctl enable proces-manager-controller.service &
+sudo systemctl start proces-manager-controller.service &
+sudo systemctl status proces-manager-controller.service 
+```
